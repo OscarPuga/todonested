@@ -1,6 +1,8 @@
 class ApplicationController < ActionController::Base
-  helper_method :logged_in? :current_user
+
+  
   before_action :ensure_login
+  
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
@@ -14,7 +16,8 @@ class ApplicationController < ActionController::Base
   end
 
   def ensure_login
-    redirect_to root_path if !logged_in?
+    redirect_to login_path if !logged_in?
   end
   
+  helper_method :logged_in?, :current_user
 end

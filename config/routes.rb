@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  root 'todo_lists#index'
+  
   resources :sessions, only: [:new, :create, :destroy]
 
   get "/login" => "sessions#new", as: "login"
@@ -13,7 +15,7 @@ Rails.application.routes.draw do
     resources :todo_items
   end
 
-  root 'todo_lists#index'
+
   
   # You can have the root of your site routed with "root"
   # root 'welcome#index'

@@ -6,10 +6,11 @@ class SessionsController < ApplicationController
   end
 
   def create
-    username = params[:username]
-    password = params[:password]
-    user = User.where(username:"#{username}").first
-    if user.authenticate("#{password}")
+    username = params[:user][:username]
+    password = params[:user][:password]
+
+    user = User.where(username: username).first
+    if user.authenticate(password)
       session[:userid] = user.id
       flash[:notice] = "successfully logged"
       redirect_to root_path

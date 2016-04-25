@@ -12,7 +12,7 @@ class ApplicationController < ActionController::Base
   end
   
   def current_user
-    return Users.find(session[:userid]) if logged_in?
+    return User.find(session[:userid]) if logged_in?
   end
 
   def ensure_login

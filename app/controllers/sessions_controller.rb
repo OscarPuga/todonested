@@ -12,7 +12,7 @@ class SessionsController < ApplicationController
     user = User.where(username: username).first
     if user.authenticate(password)
       session[:userid] = user.id
-      flash[:notice] = "successfully logged"
+      flash[:notice] = "Logged in successfully"
       redirect_to root_path
     else
       flash[:alert] = "wrong password"
